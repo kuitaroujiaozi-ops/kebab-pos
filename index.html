@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TAYHOON KEBAB POS</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>TAYHOON KEBAB POS</h1>
+
+  <div class="container">
+    <div class="menu">
+      <h2>商品</h2>
+
+      <button class="product-button" onclick="selectKebab('ケバブサンド', 800)">
+        <img src="images/sando.png" alt="ケバブサンド">
+        <span class="product-name">ケバブサンド</span>
+        <span class="product-price">¥800</span>
+      </button>
+
+      <button class="product-button" onclick="selectKebab('おつまみケバブ', 800)">
+        <img src="images/otsumami.png" alt="おつまみケバブ">
+        <span class="product-name">おつまみケバブ</span>
+        <span class="product-price">¥800</span>
+      </button>
+
+      <button class="product-button" onclick="selectKebab('ケバブラップ', 1000)">
+        <img src="images/wrap.png" alt="ケバブラップ">
+        <span class="product-name">ケバブラップ</span>
+        <span class="product-price">¥1,000</span>
+      </button>
+
+      <button class="product-button" onclick="selectKebab('ケバブ丼', 1000)">
+        <img src="images/don.png" alt="ケバブ丼">
+        <span class="product-name">ケバブ丼</span>
+        <span class="product-price">¥1,000</span>
+      </button>
+
+      <button class="product-button" onclick="selectPotato()">
+        <img src="images/potato.png" alt="ポテト">
+        <span class="product-name">ポテト</span>
+        <span class="product-price">¥800</span>
+      </button>
+
+      <button class="product-button" onclick="selectHotdog()">
+        <img src="images/hotdog.png" alt="チーズハッドグ">
+        <span class="product-name">チーズハッドグ</span>
+        <span class="product-price">¥600</span>
+      </button>
+    </div>
+
+    <div id="kebab-options" class="option-panel" style="display:none;">
+      <h2 id="selected-kebab-name"></h2>
+      <h3>ソース</h3>
+      <label><input type="radio" name="sauce" value="甘口" checked>甘口</label>
+      <label><input type="radio" name="sauce" value="中辛">中辛</label>
+      <label><input type="radio" name="sauce" value="辛口">辛口</label>
+      <h3>サイズ</h3>
+      <label><input type="radio" name="size" value="普通" checked>普通</label>
+      <label><input type="radio" name="size" value="大盛り">大盛り +¥200</label>
+      <div class="option-actions">
+        <button onclick="backToMenu()">← 戻る</button>
+        <button onclick="addKebab()">注文に追加</button>
+      </div>
+    </div>
+
+    <div class="order">
+      <h2>注文内容</h2>
+      <div id="order-list"></div>
+      <h2 id="total">合計：¥0</h2>
+      <button onclick="openCheckout()">会計する</button>
+    </div>
+
+    <div id="potato-options" class="option-panel" style="display:none;">
+      <h2>ポテト ¥800</h2>
+      <h3>味を選択</h3>
+      <label><input type="radio" name="potato-flavor" value="ケチャップ" data-extra="0" checked>ケチャップ +¥0</label>
+      <label><input type="radio" name="potato-flavor" value="ダブルチーズ" data-extra="100">ダブルチーズ +¥100</label>
+      <label><input type="radio" name="potato-flavor" value="明太マヨ" data-extra="100">明太マヨ +¥100</label>
+      <div class="option-actions">
+        <button onclick="backToMenu()">← 戻る</button>
+        <button onclick="addPotato()">注文に追加</button>
+      </div>
+    </div>
+
+    <div id="hotdog-options" class="option-panel" style="display:none;">
+      <h2>チーズハッドグ ¥600</h2>
+      <h3>トッピング</h3>
+      <label><input type="checkbox" id="hotdog-ketchup">ケチャップ</label>
+      <label><input type="checkbox" id="hotdog-mustard">マスタード</label>
+      <div class="option-actions">
+        <button onclick="backToMenu()">← 戻る</button>
+        <button onclick="addHotdog()">注文に追加</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="history-section">
+    <div class="history-header">
+      <h2>会計履歴</h2>
+      <button onclick="clearHistory()">履歴を削除</button>
+    </div>
+    <div id="history-list"></div>
+  </div>
+
+  <div id="checkout-modal" class="checkout-modal">
+    <div class="checkout-box">
+      <h2>お会計</h2>
+      <p class="checkout-label">合計金額</p>
+      <p id="checkout-total" class="checkout-total">¥0</p>
+      <label class="payment-label" for="payment-input">お預かり金額</label>
+      <div class="payment-input-area">
+        <span>¥</span>
+        <input type="number" id="payment-input" min="0" placeholder="0" oninput="calculateChange()">
+      </div>
+      <p class="checkout-label">お釣り</p>
+      <p id="change-display" class="change-display">¥0</p>
+      <p id="payment-message" class="payment-message"></p>
+      <div class="checkout-buttons">
+        <button class="checkout-back" onclick="closeCheckout()">戻る</button>
+        <button class="checkout-complete" onclick="completeCheckout()">会計完了</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
