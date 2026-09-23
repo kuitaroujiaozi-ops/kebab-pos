@@ -1,7 +1,7 @@
-# TAYHOON KEBAB POS
+# TAYFUN KEBAB POS
 ケバブ店でのレジ業務を想定して制作した、タッチパネル式のPOSシステムです。
 
-![TAYHOON KEBAB POS](images/pos-demo.png)
+![TAYFUN KEBAB POS](images/pos-demo.png)
 
 ## デモ
 
