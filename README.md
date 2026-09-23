@@ -1,12 +1,12 @@
 # TAYHOON KEBAB POS
+ケバブ店でのレジ業務を想定して制作した、タッチパネル式のPOSシステムです。
+
+![TAYHOON KEBAB POS](images/pos-demo.png)
 
 ## デモ
 
 実際に操作できます。  
 https://kuitaroujiaozi-ops.github.io/kebab-pos/
-
-ケバブ店でのレジ業務を想定して制作した、タッチパネル式のPOSシステムです。
-
 
 ## 制作背景
 
